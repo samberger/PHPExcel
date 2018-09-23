@@ -36,7 +36,6 @@ define('EOL',(PHP_SAPI == 'cli') ? PHP_EOL : '<br />');
 /** Include PHPExcel */
 require_once dirname(__FILE__) . '/../Classes/PHPExcel.php';
 
-
 // Create new PHPExcel object
 echo date('H:i:s') , " Create new PHPExcel object" , EOL;
 $objPHPExcel = new PHPExcel();
@@ -69,6 +68,14 @@ $objPHPExcel->setActiveSheetIndex(0)
 $objPHPExcel->getActiveSheet()->setCellValue('A8',"Hello\nWorld");
 $objPHPExcel->getActiveSheet()->getRowDimension(8)->setRowHeight(-1);
 $objPHPExcel->getActiveSheet()->getStyle('A8')->getAlignment()->setWrapText(true);
+
+
+$value = "-ValueA\n-Value B\n-Value C";
+$objPHPExcel->getActiveSheet()->setCellValue('A10', $value);
+$objPHPExcel->getActiveSheet()->getRowDimension(10)->setRowHeight(-1);
+$objPHPExcel->getActiveSheet()->getStyle('A10')->getAlignment()->setWrapText(true);
+$objPHPExcel->getActiveSheet()->getStyle('A10')->setQuotePrefix(true);
+
 
 
 // Rename worksheet
